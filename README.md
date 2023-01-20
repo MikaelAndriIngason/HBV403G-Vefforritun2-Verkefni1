@@ -1,1 +1,3 @@
-# HBV403G-Vefforritun2-Verkefni1
+# HBV403G - Verkefni 1
+
+https://vefforritun2-verkefni1.netlify.app/
