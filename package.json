@@ -1,0 +1,26 @@
+{
+  "name": "hbv403g-vefforritun2-verkefni1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "slint": "stylelint styles.css ./**/*.css",
+    "elint": "eslint ./**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikaelAndriIngason/HBV403G-Vefforritun2-Verkefni1.git"
+  },
+  "author": "Mikael Andri Ingason",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikaelAndriIngason/HBV403G-Vefforritun2-Verkefni1/issues"
+  },
+  "homepage": "https://github.com/MikaelAndriIngason/HBV403G-Vefforritun2-Verkefni1#readme",
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard": "^29.0.0"
+  },
+  "type": "module"
+}
