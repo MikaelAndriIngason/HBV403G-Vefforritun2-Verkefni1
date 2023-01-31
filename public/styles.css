@@ -37,7 +37,7 @@ body {
 
 .deildir {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
 
@@ -103,6 +103,8 @@ table a:hover {
 
 h1 {
   padding-top: 1em;
+  max-width: 20em;
+  margin: 0 auto;
 }
 
 .lysing {
@@ -131,32 +133,13 @@ footer {
   color: white;
   padding: 2em;
   text-align: center;
-  height: 10em;
+  min-height: 10em;
 }
 
 footer h4 {
   padding-top: 2em;
   color: rgb(146 146 146);
 }
-
-/*
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td,
-th {
-  border: 1px solid #ddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #ddd;
-}
-*/
 
 table {
   border-collapse: collapse;
@@ -182,21 +165,84 @@ td {
   padding: 12px 15px;
 }
 
-/* tbody tr:hover {
-  background-color: #e7e7e7 !important;
-} */
-
 tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 
 td:nth-child(6) {
   text-align: center;
+  width: 120px;
 }
 
 /* Desktop */
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 800px) {
   .deildir {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
+
+  header a {
+    position: static;
+    display: inline-block;
+    margin-top: 1em;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  th,
+  td {
+    padding: 7px;
+  }
+
+  td {
+    min-height: 35px;
+  }
+
+  tr {
+    padding-bottom: 1em;
+    background-color: white !important;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  td:not(:last-child) {
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:last-child {
+    margin: 0 auto;
+    background-color: var(--accent) !important;
+    width: 100%;
+  }
+
+  tr td:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  td a {
+    color: white;
+  }
+
+  td::before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    font-weight: bolder;
+    width: 50%;
+  }
+
+  td:nth-of-type(1)::before { content: "NÚMER"; }
+  td:nth-of-type(2)::before { content: "HEITI"; }
+  td:nth-of-type(3)::before { content: "EININGAR"; }
+  td:nth-of-type(4)::before { content: "MISSERI"; }
+  td:nth-of-type(5)::before { content: "NÁMSSTIG"; }
 }

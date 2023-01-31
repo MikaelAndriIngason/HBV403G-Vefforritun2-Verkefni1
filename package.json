@@ -6,7 +6,7 @@
   "scripts": {
     "slint": "stylelint styles.css ./**/*.css",
     "elint": "eslint ./**/*.js", 
-    "build": "node ./app.js && cpy styles.css dist"
+    "build": "node ./app.js && cpy ./public/*.css dist"
   },
   "repository": {
     "type": "git",

@@ -60,7 +60,7 @@ function anotherTest(e, d) {
             }
         }
     });
-    content = `<div class="lysing"><h2>Lýsing</h2><p>${e.description}</p></div><section class="afangar" id="afangar"><h2>Áfangar</h2><table><thead><tr><th>Númer</th><th>Heiti</th><th>Einingar</th><th>Kennslumisseri</th><th>Námsstig</th><th> </th></tr></thead>${tafla}</table></section>`;
+    content = `<div class="lysing"><h2>Lýsing</h2><p>${e.description}</p></div><section class="afangar" id="afangar"><h2>Áfangar</h2><table><thead><tr><th>Númer</th><th>Heiti</th><th>Einingar</th><th>Misseri</th><th>Námsstig</th><th> </th></tr></thead>${tafla}</table></section>`;
     buaTilSidu(nafn, e.title, content, true);
 }
 
