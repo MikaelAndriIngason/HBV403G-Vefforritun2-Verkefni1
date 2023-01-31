@@ -4,6 +4,10 @@ const stadsetningSida = './dist/';
 
 var undirsidur;
 
+if (!fs.existsSync('./dist')) {
+    fs.mkdirSync('./dist');
+}
+
 function buaTilSidu(nafn, titill, efni, undirsida) {
     let backButton = '';
     if (undirsida) backButton = '<a href="./index.html">◀ Til baka</a>';
@@ -22,7 +26,7 @@ function buaTilSidu(nafn, titill, efni, undirsida) {
                    <main>${efni}</main>
                    <footer><h4>Mikael Andri Ingason - Verkefni 1 - 2023<br>mai24@hi.is</h4></footer>
                 </body></html>`));
-    fs.writeFile(stadsetningSida + nafn + '.html', data, (err) => { if (err) throw err; });
+    fs.writeFile(stadsetningSida + nafn + '.html', data, (err) => { if (err) return; });
 }
 
 fs.readFile('./data/index.json', (err, data) => {

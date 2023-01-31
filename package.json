@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "slint": "stylelint styles.css ./**/*.css",
-    "elint": "eslint ./**/*.js"
+    "elint": "eslint ./**/*.js", 
+    "build": "node ./app.js"
   },
   "repository": {
     "type": "git",
