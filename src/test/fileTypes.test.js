@@ -10,8 +10,8 @@ describe('checkURL', () => {
     })
 })
 
-/*describe('readJson', () => {
+describe('readJson', () => {
     it('Reads a json file and returns a json object, if there is a file', () => {
-        expect(readJson('./src/test/testfiles/readjsontest.json')).resolves.toBe()
+        expect(readJson('./src/test/testfiles/readjsontest.json')).resolves.toBe('123')
     })
-})*/
+})
