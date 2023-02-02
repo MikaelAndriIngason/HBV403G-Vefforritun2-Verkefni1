@@ -16,7 +16,7 @@ function createPage(title, content, sub) {
            <header><h1>${title}</h1>${sub ? '<a href="./index.html">◀ Til baka</a>' : ''}</header>
            <main>${content}</main>
            <footer><h4>Mikael Andri Ingason - Verkefni 1 - 2023<br>mai24@hi.is</h4></footer>
-           <script src='../src/lib/orderTable.js'></script>
+           <script src='../public/orderTable.js'></script>
         </body></html>`;
 }
 
