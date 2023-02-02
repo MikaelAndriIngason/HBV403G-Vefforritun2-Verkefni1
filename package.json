@@ -7,7 +7,7 @@
     "slint": "stylelint styles.css ./**/*.css",
     "elint": "eslint ./**/*.js",
     "build": "node ./src/build.js && cpy public dist",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' jest ./src/test/*.js --coverage"
+    "test": "cross-env NODE_OPTIONS='--experimental-vm-modules' jest ./src/test/*.js --coverage"
   },
   "repository": {
     "type": "git",

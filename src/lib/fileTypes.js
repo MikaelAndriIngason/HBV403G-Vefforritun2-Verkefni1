@@ -21,7 +21,13 @@ export async function readCSV(path, { encoding = 'latin1' } = {}) {
  * @returns a Json object
  */
 export async function readJson(path) {
-    const json = JSON.parse(readFileSync(path));
+    let json;
+    try {
+        json = JSON.parse(readFileSync(path));
+    } catch (e) {
+        return;
+    }
+    //const json = JSON.parse(readFileSync(path));
     const data = [];
     json.forEach(e => {
         data.push({title: e.title, description: e.description, csv: e.csv})
