@@ -9,7 +9,8 @@ const OUTPUT_DIR = './dist';
 
 // Main fallið
 async function main() {
-    // Ef ./dist er ekki til, þá er það búið til
+
+    // Býr til './dist' ef ekki til
     if (!(await direxists(OUTPUT_DIR))) {
       await mkdir(OUTPUT_DIR);
     }
@@ -20,8 +21,10 @@ async function main() {
     // Finnur .json skráina og býr til index síðuna
     for (const file of allFiles) {
         if (path.extname(file) === '.json') {
+            // Les in gögn frá .json
             data = await readJson(file);
 
+            // Býr til index síðu með gögnunum
             const filepath = join(OUTPUT_DIR, 'index.html');
             const template = createIndex('Kennsluskrá', data, false);
 
@@ -31,8 +34,10 @@ async function main() {
 
     // Býr til allar undirsíðunar frá .json + .csv skránum
     for (const department of data) {
+        // Les in gögn frá .csv
         const csv = await readCSV(DATA_DIR + '/' + department.csv);
 
+        // Býr til nýja undirsíðu með gögnunum
         const filename = department.csv.slice(0, -3) + 'html';
         const filepath = join(OUTPUT_DIR, filename);
         const template = createSubPage(department.title, department, csv, true);

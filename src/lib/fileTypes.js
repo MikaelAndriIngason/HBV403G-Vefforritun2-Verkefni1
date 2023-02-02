@@ -1,15 +1,25 @@
 import { readFile } from 'fs/promises';
 import { readFileSync } from 'fs';
 
-export async function readCSV(file, { encoding = 'latin1' } = {}) {
+/**
+ * Reads the contents of a CSV file
+ * @param {string} path Path to file
+ * @returns an array of contents (split into lines)
+ */
+export async function readCSV(path, { encoding = 'latin1' } = {}) {
     try {
-      const content = await readFile(file);
+      const content = await readFile(path);
       return content.toString(encoding).split(/\r?\n/);
     } catch (e) {
       return;
     }
 }
 
+/**
+ * Reads the contents of a Json file
+ * @param {string} path Path to file
+ * @returns a Json object
+ */
 export async function readJson(path) {
     const json = JSON.parse(readFileSync(path));
     const data = [];
@@ -19,7 +29,11 @@ export async function readJson(path) {
     return data;
 }
 
-// Skoðar hvort hlekkur er gildur
+/**
+ * Checks if a link is a valid link
+ * @param {string} link the link to validate
+ * @returns true if it's valid, false if not
+ */
 export function checkURL(link) {
     let url;
     try {

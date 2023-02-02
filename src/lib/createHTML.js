@@ -16,6 +16,7 @@ function createPage(title, content, sub) {
            <header><h1>${title}</h1>${sub ? '<a href="./index.html">◀ Til baka</a>' : ''}</header>
            <main>${content}</main>
            <footer><h4>Mikael Andri Ingason - Verkefni 1 - 2023<br>mai24@hi.is</h4></footer>
+           <script src='../src/lib/orderTable.js'></script>
         </body></html>`;
 }
 
@@ -50,7 +51,7 @@ function createSubPageContent(content, data) {
             result += `<tr><td>${gildi[0]}</td><td>${gildi[1]}</td><td>${gildi[2]}</td><td>${gildi[3]}</td><td>${gildi[4]}</td><td>${link}</td></tr>`;
         }
     });
-    return `<div class="lysing"><h2>Lýsing</h2><p>${content.description}</p></div><section class="afangar" id="afangar"><h2>Áfangar</h2><table><thead><tr><th>Númer</th><th>Heiti</th><th>Einingar</th><th>Misseri</th><th>Námsstig</th><th> </th></tr></thead><tbody>${result}</tbody></table></section>`;
+    return `<div class="lysing"><h2>Lýsing</h2><p>${content.description}</p></div><section class="afangar" id="afangar"><h2>Áfangar</h2><table id="sortedtable"><thead><tr><th>Númer</th><th>Heiti</th><th data-type="number">Einingar</th><th>Misseri</th><th>Námsstig</th><th> </th></tr></thead><tbody>${result}</tbody></table></section>`;
   }
   else return `<div class="lysing"><h2>Lýsing</h2><p>${content.description}</p></div><section class="afangar" id="afangar"><h2>Áfangar</h2><table><thead><tr><th>Númer</th><th>Heiti</th><th>Einingar</th><th>Misseri</th><th>Námsstig</th><th> </th></tr></thead><tbody></tbody></table></section>`;
 }
