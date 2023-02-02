@@ -1,62 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
+    initialize();
+});
+
+function initialize() {
     const table = document.getElementById('sortedtable');
     const headers = table.querySelectorAll('th');
     const tableBody = table.querySelector('tbody');
     const rows = tableBody.querySelectorAll('tr');
 
-    // Track sort directions
-    const directions = Array.from(headers).map(function () {
-        return '';
-    });
-
-    // Transform the content of given cell in given column
-    const transform = function (index, content) {
-        // Get the data type of column
-        const type = headers[index].getAttribute('data-type');
-        switch (type) {
-            case 'number':
-                return parseFloat(content);
-            case 'string':
-            default:
-                return content;
-        }
-    };
+    // Geymir röðunaráttina
+    const direction = [];
 
     const sortColumn = function (index) {
-        // Get the current direction
-        const direction = directions[index] || 'asc';
-
-        // A factor based on the direction
-        const multiplier = direction === 'asc' ? 1 : -1;
-
+        // Nær í áttina
+        const dir = direction[index] || 'asc';
+        
+        const multiplier = dir === 'asc' ? 1 : -1;
         const newRows = Array.from(rows);
 
+        // Raðar röðunum
         newRows.sort(function (rowA, rowB) {
             const cellA = rowA.querySelectorAll('td')[index].innerHTML;
             const cellB = rowB.querySelectorAll('td')[index].innerHTML;
+            const a = checkType(headers, index, cellA);
+            const b = checkType(headers, index, cellB);
 
-            const a = transform(index, cellA);
-            const b = transform(index, cellB);
-
-            switch (true) {
-                case a > b:
-                    return 1 * multiplier;
-                case a < b:
-                    return -1 * multiplier;
-                case a === b:
-                    return 0;
-            }
+            if (a > b)
+                return 1 * multiplier;
+            else if (a < b)
+                return -1 * multiplier;
+            else if (a === b)
+                return 0;
         });
 
-        // Remove old rows
+        // Hreinsar allar raðinar
         [].forEach.call(rows, function (row) {
             tableBody.removeChild(row);
         });
 
-        // Reverse the direction
-        directions[index] = direction === 'asc' ? 'desc' : 'asc';
+        // Snýr áttinni við
+        direction[index] = dir === 'asc' ? 'desc' : 'asc';
 
-        // Append new row
+        // Bætir við röðuðu röðunum við
         newRows.forEach(function (newRow) {
             tableBody.appendChild(newRow);
         });
@@ -64,26 +49,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let s = 0;
 
+    // Setur eventListener á alla dálkahausa til að sort-a og setja örvar
     [].forEach.call(headers, function (header, index) {
         if (headers[headers.length-1] !== header) {
             header.addEventListener('click', function () {
                 sortColumn(index);
-                clearAll();
+                clearAll(headers);
                 if (s === 0) {
                     s = 1;
                     header.classList.add('asc');
                 }
                 else {
-                    header.classList.add('desc');
                     s = 0;
+                    header.classList.add('desc');
                 }
             });
         }
     });
+}
 
-    const clearAll = function() {
-        headers.forEach(e => {
-            e.className = '';
-        })
-    }
-});
+// Ef dálkur er með tölur þá er hann breyttur frá tölum yfir í float, annars bara að skila
+function checkType(headers, index, content) {
+    const type = headers[index].getAttribute('data-type');
+
+    if (type === 'number')
+        return parseFloat(content);
+    else 
+        return content;
+}
+
+// Hreinsar alla klasa af table headers (örvarnar)
+function clearAll(headers) {
+    headers.forEach(e => {
+        e.className = '';
+    })
+}

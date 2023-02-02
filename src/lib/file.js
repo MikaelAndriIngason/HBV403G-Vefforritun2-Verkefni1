@@ -1,4 +1,4 @@
-import { readdir, readFile as fsReadFile, stat } from 'fs/promises';
+import { readdir, stat } from 'fs/promises';
 import { join } from 'path';
 
 /**
@@ -43,19 +43,4 @@ export async function readFilesFromDir(dir) {
 
   // Remove any directories that will be represented by `null`
   return resolved.filter(Boolean);
-}
-
-/**
- * Read a file and return its content.
- * @param {string} file File to read
- * @param {object} options.encoding asdf
- * @returns {Promise<string | null>} Content of file or `null` if unable to read.
- */
-export async function readFile(file, { encoding = 'latin1' } = {}) {
-  try {
-    const content = await fsReadFile(file);
-    return content.toString(encoding);
-  } catch (e) {
-    return null;
-  }
 }

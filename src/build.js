@@ -1,8 +1,8 @@
-import { mkdir, writeFile } from 'fs/promises';
 import path, { join } from 'path';
+import { mkdir, writeFile } from 'fs/promises';
+import { readCSV, readJson } from './lib/fileTypes.js';
 import { direxists, readFilesFromDir } from './lib/file.js';
 import { createIndex, createSubPage } from './lib/createHTML.js';
-import { readCSV, readJson } from './lib/fileTypes.js';
 
 const DATA_DIR   = './data';
 const OUTPUT_DIR = './dist';
@@ -26,7 +26,7 @@ async function main() {
 
             // Býr til index síðu með gögnunum
             const filepath = join(OUTPUT_DIR, 'index.html');
-            const template = createIndex('Kennsluskrá', data, false);
+            const template = createIndex('Kennsluskrá', data);
 
             await writeFile(filepath, template, { flag: 'w+' });
         }
