@@ -28,7 +28,6 @@
   "type": "module",
   "dependencies": {
     "@jest/globals": "^29.3.1",
-    "jest": "^29.4.1",
-    "cross-env": "^7.0.3"
+    "jest": "^29.4.1"
   }
 }
