@@ -32,7 +32,7 @@ describe('file', () => {
       expect(result).toEqual([
         'src/test/file.test.js',
         'src/test/fileTypes.test.js',
-        'src/test/createHTML.test.js',
+        'src/test/createHTML.test.js'
       ]);
     });
   });
