@@ -30,9 +30,9 @@ describe('file', () => {
       const result = await readFilesFromDir('./src/test');
 
       expect(result).toEqual([
+        'src/test/createHTML.test.js',
         'src/test/file.test.js',
         'src/test/fileTypes.test.js',
-        'src/test/createHTML.test.js'
       ]);
     });
   });
